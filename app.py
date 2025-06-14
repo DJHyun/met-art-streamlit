@@ -21,6 +21,9 @@ if query:
     for object_id in ids:
         data = get_artwork_details(object_id)
         st.subheader(data["title"])
-        st.image(data.get("primaryImageSmall"), width=300)
+
+        if data and data.get("primaryImageSmall"):
+            st.image(data["primaryImageSmall"], width=300)
+    
         st.write(f"Artist: {data.get('artistDisplayName')}")
         st.write(f"Year: {data.get('objectDate')}")
